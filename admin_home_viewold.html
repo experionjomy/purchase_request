@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>View Old Request</title>
+	 <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ 
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script type="text/javascript" src="JS/client/admin_home_viewall.js"></script>
+		<script type="text/javascript" src="JS/client/admin_home_viewold.js"></script>
+	
+	 <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="CSS/user_home_viewall.css">
+	<!-- <link rel="stylesheet" type="text/css" href="CSS/admin_home_viewall.css"> -->
+</head>
+<body onunload="function clear(){}" onload="verify();">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Welcome</a>
+    </div>
+    <ul class="nav navbar-nav">
+     
+      <li><a id="welcome_username" href="#">Page 1</a></li>
+     
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+     
+      <li><a href="#" onclick="logout();"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+			
+
+
+			<div class="hov col-sm-3">
+				<ul class="nav nav-pills nav-stacked">
+				<li><a href="admin_home_viewall.html">VIEW PENDING REQUEST</a></li>
+  				<li class="active"><a href="#">VIEW OLD REQUEST</a></li>
+  				  <li><a href="add_user.html">ADD USER</a></li>
+				</ul>
+			</div>
+
+			<div id="display_purchase_details_old" class="col-sm-9" style="float:right;">
+	
+			</div>
+			<script>
+
+		client_script();
+
+
+			</script>
+</div>
+</body>
+</html>

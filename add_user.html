@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>home</title>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+	<!-- jQuery library -->
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	 <link rel="stylesheet" type="text/css" href="CSS/admin.css">  
+   <script type="text/javascript" src="JS/client/add_user_client.js"></script>
+</head>
+<body onunload="function clear(){}" onload="verify();">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Welcome</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a id="welcome_username" href="#"></a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+     
+      <li><a href="#" onclick="logout();"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+<div class="hov col-sm-3">
+<ul class="nav nav-pills nav-stacked">
+<li><a href="admin_home_viewall.html">VIEW PENDING REQUEST</a></li>
+  <li><a href="admin_home_viewold.html">VIEW OLD REQUEST</a></li>
+   <li class="active"><a href="#">ADD USER</a></li>
+</ul>
+</div>
+
+
+
+<form id="enter_details" data-toggle="validator" onsubmit="addUser();">
+<!-- LEFT SIDE OF FORM -->
+<div class="left col-sm-5">
+
+
+  <div class="form-group">
+            <label for="name" class="col-sm-4 control-label">
+            Name</label>
+            <div class="col-sm-6">
+                 <input type="text" class="form-control" id="uname" name="name" placeholder="Enter title" required>
+         		 <div class="help-block with-errors"></div>
+            </div>
+   </div>
+   <div class="form-group">
+            <label for="name" class="col-sm-4 control-label">
+          Email</label>
+            <div class="col-sm-6">
+                 <input type="text" class="form-control" id="mail" name="email" placeholder="Enter email" required>
+             <div class="help-block with-errors"></div>
+            </div>
+   </div>
+     
+
+<button id="adduser" type="submit" class="btn" >Submit</button>
+</div>
+
+
+<!-- <input type="submit" class="btn" value="Submit"> -->
+
+ 
+ </form>
+</div>
+
+<script type="text/javascript">
+
+// function addUser(){
+// var uname=document.getElementById("uname").value;
+// var email=document.getElementById("mail").value;
+// console.log(uname);
+// console.log(email);
+
+//  var httpObject=new XMLHttpRequest();
+//    httpObject.onreadystatechange=function()
+//    {
+
+//    }
+
+// var username=localStorage.getItem('USERNAME');
+// var token=localStorage.getItem('TOKEN');
+// document.getElementById('welcome_username').innerHTML=username;
+// console.log(username,token);
+// var key={'username':username,'token':token};
+// key=JSON.stringify(key);
+//    httpObject.open('POST','http://127.0.0.1:8081/adduser/'+key,true);
+//      httpObject.setRequestHeader('content-type','application/x-www-form-urlencoded');
+//      httpObject.send('username=' +uname+ '&email=' +email);
+// }
+
+
+
+</script>
+</div>
+</body>
+</html>

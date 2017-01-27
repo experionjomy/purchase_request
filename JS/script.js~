@@ -1,0 +1,9 @@
+function validate(){
+	var httpObject=new XMLHttpRequest();
+	httpObject.onreadystatechange=function()
+	{
+		console.log(this.readyState());
+		document.getElementById("printResult").innerHTML=this.status;
+		
+	}
+}

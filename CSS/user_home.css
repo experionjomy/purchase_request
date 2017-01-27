@@ -1,0 +1,79 @@
+
+.container{
+min-height: 589px;
+}
+h6{
+	font-size: 15px;
+}
+th{
+	min-width: 190px;
+}
+.Purchase_Details_data{
+	float: left;
+}
+#change_password{
+	float: right;
+}
+#reset_data {
+
+	background-color: #decba5; 
+	float: left;
+}
+#addItem{
+	margin-left: 0px !important;
+	float: right;
+	padding: 0px !important;
+}
+.panel {
+	padding-left: 0px ;
+	padding-right: 0px ;
+}
+.panel-body{
+	padding: 15px 0 15px 0;
+}
+#itemTableHeader{
+	background-color: #decba5;
+}
+.panel-default>.panel-heading{
+	background-color: #02a388;
+}
+
+.btn-submit:active{
+    background:olive;
+}
+/*.btn-info{
+	  border-style: none;
+  	  padding: 8px;
+}*/
+/*.container-fluid {
+	padding-right: 0px; 
+   	padding-left: 0px; 
+   margin-right: auto; 
+   margin-left: auto; 
+
+}*/
+
+footer{
+	background-color: black;
+	color: white;
+	width: 100%;
+}
+@media only screen and (min-width: 375px) {
+	th{
+	min-width: 80px !important;
+	}
+	.col-sm-7{
+		margin: auto;
+	}
+	/*.container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}*/
+
+}
+
+
+
+

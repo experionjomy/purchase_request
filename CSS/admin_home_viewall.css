@@ -1,0 +1,70 @@
+body{
+	width: 80%;
+	margin: auto;
+}
+#welcome{
+	border-style: outset;
+	float: left;
+	width: 30%;
+	margin:0 0 0 500px;
+}
+#welcome h5{
+	padding: 0;
+	margin: 0 0 0 40px;
+	font-size: 15px;
+}
+#heading{
+	width: 100%;
+	border-style: outset;
+	float: left;
+}
+
+ul{
+	padding: 0;
+	margin: 0;
+	width: 30%;
+	float: left;
+	
+}
+a{
+	text-decoration: none;
+}
+li{
+	list-style-type: none;
+	width: 100%;
+}
+#table1{
+	width: 100%;
+}
+.table-responsive {
+    min-height: .01%;
+    overflow-x: auto;
+    
+}
+#save_status{
+	clear: both;
+	float: right;
+}
+#display_purchase_details{
+	float: left;
+	width: 70%;
+}
+#display_purchase_details_old{
+	float: left;
+	width: 70%;
+}
+
+.hov{
+	float: left;
+	width: 30%;
+}
+.nav{
+	float: left;
+	width: 100%;
+}
+/*th{
+	padding: 20px;
+}
+td{
+	padding: 20px;
+}*/

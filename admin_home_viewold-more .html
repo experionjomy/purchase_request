@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+		<title>View More-more</title>
+    <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ 
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="JS/client/admin_home_viewall.js"></script>
+  <script type="text/javascript" src="JS/client/admin_home_viewold-more.js"></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- 	<link rel="stylesheet" type="text/css" href="CSS/user_home_viewall.css"> -->
+	<link rel="stylesheet" type="text/css" href="CSS/admin.css">
+</head>
+<body onunload="function clear(){}" onload="verify();">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Welcome</a>
+    </div>
+    <ul class="nav navbar-nav">
+     
+      <li><a id="welcome_username" href="#">Page 1</a></li>
+     
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+     
+      <li><a href="#" onclick="logout();"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+<!-- SIDE BARS -->
+<div class="hov col-sm-3">
+<ul class="nav nav-pills nav-stacked">
+  <li><a href="admin_home_viewall.html">VIEW PENDING REQUEST</a></li>
+  <li class="active"><a href="admin_home_viewold.html">VIEW OLD REQUEST</a></li>
+  <li><a href="add_user.html">ADD USER</a></li>
+</ul>
+</div>
+
+<!-- DISPLAY ALL DATA FROM PURCHASE TABLE -->
+<div id="Purchase_Details_data">
+<div id="left" class="col-sm-4">
+	<div class="style"><span>Purchase Title:</span><div class="display" id="purchase_title"></div></div>
+    <div class="style"><span>Owned By:</span><div class="display" id="owner"></div></div>
+     <div class="style"><span>Status:</span><div class="display" id="status"></div></div>
+</div>
+<div id="right" class="col-sm-4">
+	<div class="style"><span>Priority:</span><div class="display" id="priority"></div></div>
+	<div class="style"><span>Created Date:</span><div class="display" id="created_date"></div></div>
+    <div class="style"><span>Related Project:</span><div class="display" id="related_project"></div></div>
+</div>
+</div>
+
+
+<div id="Item_List_data" class="col-sm-9" style="float:right;">
+	
+</div>
+<script >
+client_script()
+// var get_purchase_id=localStorage.getItem("pid");
+// console.log(get_purchase_id);
+// var username=localStorage.getItem('USERNAME');
+// var token=localStorage.getItem('TOKEN');
+// var httpObject=new XMLHttpRequest();
+// //THIS IS TO PASS THIS VAR TO NEXT PAGE TO GET THE PURCHASE DETAILS
+
+// 	httpObject.onreadystatechange=function()
+// 	{
+
+//     console.log(this.readyState);
+//     //document.getElementById("result").innerHTML=this.status;
+  
+//     if(this.readyState=='4' && this.status=='200')
+//     {
+
+//         var result=this.responseText;
+//         result=JSON.parse(result);
+//         //console.log(result[0].Purchase_title);
+//                 content = "<form><div class='table table-responsive'><table class='table' id='table1'><thead><tr><th>No.</th><th>Item Name</th><th>Item Description</th><th>Quantity</th></tr></thead><tbody>";
+//         var i = 1;
+//         document.getElementById("purchase_title").innerHTML=result[0].Purchase_title;
+//         document.getElementById("related_project").innerHTML=result[0].Related_project;
+//         document.getElementById("priority").innerHTML=result[0].Priority;
+//         document.getElementById("created_date").innerHTML=result[0].Created_date;
+//         document.getElementById("status").innerHTML=result[0].Status;
+//         document.getElementById("owner").innerHTML=result[0].username;
+//         // console.log(result.Purchase_title);
+//         result.forEach(function(element) {
+
+//             console.log(content);
+//              content += "<tr><td>" + i + "</td><td>" + element.Item_name + "</td><td>" + element.Item_description + "</td><td>"+ element.Quantity+ "</td></tr>"  ;
+//             i++;
+//         });
+//         // AT THE END I HAVE THE SAVE BUTTON
+//         content += "</tbody> </table> </div></form>";
+                    
+//                 document.getElementById('Item_List_data').innerHTML = content;
+            
+        
+            
+//     }
+// }
+//    // var key={'username':username,'token':token};
+//    //  key=JSON.stringify(key);
+// 		httpObject.open('POST','http://127.0.0.1:8081/admin_view_all-more',true);
+// 		httpObject.setRequestHeader('content-type','application/x-www-form-urlencoded');
+// 		httpObject.send("pid="+get_purchase_id);
+</script>
+</div>
+</body>
+</html>

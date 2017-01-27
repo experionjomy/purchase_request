@@ -1,0 +1,4 @@
+sample[0] = 'a@gmail.com',
+sample[1] = 'b@gmail.com'
+
+var emails = sample.join(',');

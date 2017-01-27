@@ -1,0 +1,34 @@
+#Purchase_Details_data{
+	float: left;
+	width: 60%;
+}
+#left{
+	width: 50%;
+	float: left;
+	
+}
+#right{
+	width: 50%;
+	float: left;
+		
+}
+.hov{
+	float: left;
+	width: 30%;-
+}
+.nav{
+	width: 100%;
+	float: left;
+}
+.table{
+	width: 70%;
+}
+
+.style span {
+	float: left;
+	padding-right: 15px;
+}
+#viewmore{
+	border-style: none;
+	background-color: #075aaa;
+}

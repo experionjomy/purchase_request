@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>home</title>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	 <!-- Latest compiled and minified CSS -->
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+	<!-- jQuery library -->
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+   <script type="text/javascript" src="JS/client/user_home_client.js"></script>
+   <script type="text/javascript" src="JS/bootbox.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	 <link rel="stylesheet" type="text/css" href="CSS/user_home_viewall.css">  
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+   
+</head>
+<body onunload="function clear(){}" onload="verify(); addItem();">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Welcome</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a id="welcome_username" href="#"></a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+     
+      <li><a href="#" onclick="logout();"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+    </ul>
+  </div>
+ 
+</nav>
+<div class="container-fluid">
+<div class="row">
+<div class="hov col-sm-3  ">
+<ul class="nav nav-pills nav-stacked ">
+  <li class="active"><a href="#">NEW REQUEST</a></li>
+  <li><a href="user_home_viewall.html">VIEW OLD REQUEST</a></li>
+  <li><a href="user_home_viewrejected.html">VIEW REJECTED REQUEST</a></li>
+  <li><a href="reset_password.html">RESET PASSWORD</a></li>
+
+</ul>
+</div>
+
+<div id="item_details" class="panel panel-default col-sm-9" >
+ <div class="panel-heading"><h6><b>Enter Details</b></h6></div>
+ <div class="panel-body">
+<form id="enter_details" data-toggle="validator" method="post" onsubmit="return sendData();">
+<!-- LEFT SIDE OF FORM -->
+<div class="left col-sm-7">
+
+
+  <div class="form-group">
+            <label for="purchase_title" class="col-sm-4 control-label">
+            Purchase Title:</label>
+            <div class="col-sm-6">
+                 <input type="text" class="form-control" id="purchase_title" name="purchaseTitle" placeholder="Enter title" required>
+         		 <div class="help-block with-errors"></div>
+            </div>
+   </div>
+    <div class="form-group">
+            <label for="assigned_to" class="col-sm-4 control-label">
+            Assigned To:</label>
+            <div class="col-sm-6">
+    <select id="assigned_to" class="form-control" required>
+		<option value="">None</option>
+  		<option>Admin</option>
+  		<option>Other</option>
+	</select> 
+	<div class="help-block with-errors"></div>
+            </div>
+   </div>
+
+ <div class="form-group">
+            <label for="related_project" class="col-sm-4 control-label">
+            Related Project:</label>
+    <div class="col-sm-6">
+   <select id="related_project" class="form-control" required>
+	<option value="">None</option>
+  		<option>Project1</option>
+  		<option>Project2</option>
+  		<option>Project3</option>
+  		<option>Project4</option>
+  		<option>Other</option>
+	</select> 
+	<div class="help-block with-errors"></div>
+    </div>
+   </div>
+</div>
+
+
+
+<div class="right col-sm-5">
+
+ <div class="form-group">
+            <label for="priority" class="col-sm-4 control-label">
+            Priority:</label>
+    <div class="col-sm-6">
+   <select id="priority" class="form-control" required>
+			<option value="">None</option>
+  			<option>Critical</option>
+  			<option>Minor</option>
+			</select> 
+	<div class="help-block with-errors"></div>
+    </div>
+   </div>
+
+    <div class="form-group">
+            <label for="item_category" class="col-sm-4 control-label">
+            Item Category:</label>
+    <div class="col-sm-6">
+   <select id="item_category" class="form-control" required>
+			<option value="">None</option>
+  			<option>IT</option>
+  			<option>Furniture</option>
+  			<option>Other</option>
+			</select> 
+	<div class="help-block with-errors"></div>
+    </div>
+   </div>
+</div>
+
+
+
+ <div id="addItem" class="col-sm-12 additem">
+<table id="itemTable" class="table table-responsive panel panel-default">
+	<tr id="itemTableHeader">
+		
+		<th>Item Name</th>
+		<th> Description</th>
+		<th>Quantity</th>
+		<th> Remove</th>
+		<button type="button" class="btn btn-primary btn-sm headerButton"  onclick="addItem();">
+          <span class="glyphicon glyphicon-plus"></span> Add Item
+        </button>
+	 </tr>
+</table> 
+
+<button type="submit" class="btn btn-submit" >Submit</button>
+<!-- <input type="submit" class="btn" value="Submit"> -->
+ </div>
+ 
+ </form>
+</div>
+
+
+<!--  <div class="panel-footer">Panel Heading</div> -->
+</div>
+
+</div>
+</div>
+<script type="text/javascript">
+var username=localStorage.getItem('USERNAME');
+var token=localStorage.getItem('TOKEN');
+document.getElementById('welcome_username').innerHTML=username;
+</script>
+</body>
+<!-- <footer>&copy jomy jose</footer> -->
+</html>
