@@ -25,8 +25,10 @@ var js = {
 
 module.exports.Update_Status = function(status_update_array, res) {
     c = 0;
+    total=0;
     // for (var i = 0; i < status_update_array.length; i++){
     status_update_array.forEach(function(element) {
+        total++;
             if (element.status_of_item == 'approved') {
                 c++;
                 console.log(c);
@@ -44,14 +46,19 @@ module.exports.Update_Status = function(status_update_array, res) {
             });
         })
         // }
-    for (var i = 0; i < c; i++) {
+    for (var i = 0; i < total; i++) {
         conn.query('SELECT user.username,email,Purchase_id, Created_date ,Purchase_title FROM Purchase_Details INNER JOIN user WHERE user.username=Purchase_Details.username AND Purchase_id=? AND Status="approved" ', [status_update_array[i].purchase_id], function(err, rows) {
+            console.log(rows);
             if (err) {
                 console.log(err); js.message = 'failed';
             } else {
+                if(rows.length>0) {
+
+                    console.log("send mail");
                 rows = JSON.stringify(rows);
                 rows = JSON.parse(rows);
                 sendMail(rows[0], res, c);
+                }
             }
         });
     }
