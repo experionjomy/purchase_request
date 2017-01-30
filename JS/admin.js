@@ -125,6 +125,7 @@ admin_router.route('/adduser/:key')
         console.log("token" + key_value.token);
         var username = key_value.username;
         var token = key_value.token;
+        var js={"status":200};
         if (key_value.token == "") {
             console.log("invalid user");
         } else {
@@ -132,11 +133,13 @@ admin_router.route('/adduser/:key')
                 conn.query("insert into user (username,email,password) values ('" + userName + "','" + email + "','" + p_word + "')", function(err, rows) {
                     if (err) {
                         console.log(err);
+                        status=404;
                     } else {
                         adduser.sendMail(email, userName, password);
                         var result_rows = JSON.stringify(rows);
                         console.log(result_rows);
-                        res.send(result_rows);
+                        js.status=200;
+                        res.send(js);
                     }
                 });
             }

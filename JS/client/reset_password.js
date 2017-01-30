@@ -50,20 +50,20 @@ function check(newPassword, confirmPassword) {
 }
 
 
-function logout() {
-    if (confirm("Are you sure?")) {
-        localStorage.clear();
-        window.location = "login.html";
-    } else {
-        return false;
-    }
-}
+// function logout() {
+//     if (confirm("Are you sure?")) {
+//         localStorage.clear();
+//         window.location = "login.html";
+//     } else {
+//         return false;
+//     }
+// }
 
-function verify() {
-    username = localStorage.getItem('USERNAME');
-    console.log(username);
-    if (username == null) {
+// function verify() {
+//     username = localStorage.getItem('USERNAME');
+//     console.log(username);
+//     if (username == null) {
 
-        document.location.href = "login.html";
-    }
-}
+//         document.location.href = "login.html";
+//     }
+// }

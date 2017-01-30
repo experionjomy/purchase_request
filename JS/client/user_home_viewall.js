@@ -11,16 +11,22 @@ var httpObject=new XMLHttpRequest();
         result=JSON.parse(result);
             console.log(result[0]);
 
-            content = "<div class='table table-responsive'><table class='table table-responsive table-hover' id='table1'><thead><tr><th>No.</th><th>Purchase Title</th><th>Status</th><th>Created_date</th><th>View More</th></tr></thead><tbody>";
+            content = "<div class='table table-responsive'><table class='table table-responsive table-hover' id='table1'><thead><tr><th>No.</th><th>Purchase Title</th><th>Status</th><th>Created date</th><th>Created time</th><th>View More</th></tr></thead><tbody>";
         var i = 1;
         result.forEach(function(element) {
-            console.log(content);
-            content += "<tr><td>" + i + "</td><td>" + element.Purchase_title + "</td><td>" + element.Status + "</td><td>" + element.Created_date+"</td><td>"+"<button id='viewmore' class='btn-info' onclick='displayItem("+element.Purchase_id+");'>View More</button>" +"</td></tr>" ;
+          console.log(new Date(element.Created_date));
+            var date=new Date(element.Created_date);
+            date=date.toISOString().split('T')[0]
+            date = toDate2(date);
+
+
+            content += "<tr><td>" + i + "</td><td>" + element.Purchase_title + "</td><td>" + element.Status + "</td><td>" + date+"</td><td></td><td>"+"<button id='viewmore' class='btn-info' onclick='displayItem("+element.Purchase_id+");'>View More</button>" +"</td></tr>" ;
             
             i++;
         });
         content += "</tbody> </table> </div>";  
         document.getElementById('display_purchase_details').innerHTML = content;
+        $('#table1').DataTable();
     
             
     }
@@ -47,16 +53,7 @@ function displayItem(id){
      localStorage.setItem("pid_user",id);
    
     }
-function logout(){
-    if(confirm("Are you sure?"))
-    {
-        localStorage.clear();
-    window.location="login.html";
-    }
-    else{
-        return false;
-    }
-}
+
 function verify(){
   username=localStorage.getItem('USERNAME');
   console.log(username);
@@ -64,4 +61,17 @@ function verify(){
 
     document.location.href="login.html";
   }
+}
+function toDate2(str) {
+  // var str = moment(str).add(1, 'day');
+   var from = str.split("-");
+   
+   var str=from[2]+"-"+ from[1] +"-"+ from[0];
+   return (str);
+}
+function toTime(str) {
+   var from = str.split(":");
+   var dt = moment(from[0]+":"+from[1], ["HH:mm"]).format("hh:mm a");
+   //var str=(Number(from[2])+1)+"-"+ from[1] +"-"+ from[0];
+   return (dt);
 }

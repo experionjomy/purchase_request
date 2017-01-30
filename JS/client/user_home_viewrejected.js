@@ -14,14 +14,16 @@ function client_script(){
         result=JSON.parse(result);
           //  console.log(result[0]);
 
-            content = "<form><div><table class='table table-responsive' id='table1'><thead><tr><th>No.</th><th>Received Date</th><th>Purchase Title</th><th>View More</th></tr></thead><tbody>";
+            content = "<form><div class='table-responsive'><table class='table' id='table1'><thead><tr><th>No.</th><th>Received Date</th><th>Purchase Title</th><th>View More</th></tr></thead><tbody>";
         var i = 1;
         
         result.forEach(function(element) {
 
           //  console.log(content);
-          
-            content += "<tr><td>" + i + "</td><td>" + element.Created_date + "</td><td>" + element.Purchase_title + "</td><td><button id='viewmore' class='btn-info' type='button' onclick='return displayItem("+element.Purchase_id+");'>VIEW MORE</button></td></tr>"  ;
+            var date=new Date(element.Created_date);
+            date=date.toISOString().split('T')[0]
+            date = toDate2(date);
+            content += "<tr><td>" + i + "</td><td>" + date + "</td><td>" + element.Purchase_title + "</td><td><button id='viewmore' class='btn-info' type='button' onclick='return displayItem("+element.Purchase_id+");'>VIEW MORE</button></td></tr>"  ;
             purchase_id.push(element.Purchase_id);
 
            localStorage.setItem("pid",element.Purchase_id);
@@ -34,7 +36,7 @@ function client_script(){
         content += "</tbody> </table> </div></form>";
                     
                 document.getElementById('display_purchase_details').innerHTML = content;      
-
+                    $('#table1').DataTable();
     }
 }
   //PASSING USER NAME
@@ -51,14 +53,6 @@ key=JSON.stringify(key);
 }
 
 
-function verify(){
-  username=localStorage.getItem('USERNAME');
-  console.log(username);
-  if(username==null){
-
-    document.location.href="login.html";
-  }
-}
 
 function displayItem(id){
     localStorage.setItem("pid_rejected",id);
@@ -67,13 +61,11 @@ function displayItem(id){
      
     return false;
     }
-function logout(){
-  if(confirm("Are you sure?"))
-  {
-    localStorage.clear();
-  window.location="login.html";
-  }
-  else{
-    return false;
-  }
+
+function toDate2(str) {
+  // var str = moment(str).add(1, 'day');
+   var from = str.split("-");
+   
+   var str=from[2]+"-"+ from[1] +"-"+ from[0];
+   return (str);
 }

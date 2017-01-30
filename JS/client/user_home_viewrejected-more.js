@@ -24,7 +24,10 @@ var httpObject=new XMLHttpRequest();
         document.getElementById("purchase_title").innerHTML=result[0].Purchase_title;
         document.getElementById("related_project").innerHTML=result[0].Related_project;
         document.getElementById("priority").innerHTML=result[0].Priority;
-        document.getElementById("created_date").innerHTML=result[0].Created_date;
+          var date=new Date(result[0].Created_date);
+            date=date.toISOString().split('T')[0]
+            date = toDate2(date);
+        document.getElementById("created_date").innerHTML=date;
         document.getElementById("reason").innerHTML=result[0].Rejection_reason;
 
         // console.log(result.Purchase_title);
@@ -38,7 +41,8 @@ var httpObject=new XMLHttpRequest();
         content += "</tbody> </table> </div></form>";
                     
                 document.getElementById('Item_List_data').innerHTML = content;
-            
+              $('#table1').DataTable();
+
         
             
     }
@@ -51,23 +55,30 @@ var httpObject=new XMLHttpRequest();
     httpObject.send("pid="+get_purchase_id);
 }
 
-function logout(){
-    if(confirm("Are you sure?"))
-    {
-        localStorage.clear();
-    window.location="login.html";
-    }
-    else{
-        return false;
-    }
-}
+// function logout(){
+//     if(confirm("Are you sure?"))
+//     {
+//         localStorage.clear();
+//     window.location="login.html";
+//     }
+//     else{
+//         return false;
+//     }
+// }
 
 
-function verify(){
-  username=localStorage.getItem('USERNAME');
-  console.log(username);
-  if(username==null){
+// function verify(){
+//   username=localStorage.getItem('USERNAME');
+//   console.log(username);
+//   if(username==null){
 
-    document.location.href="login.html";
-  }
+//     document.location.href="login.html";
+//   }
+// }
+function toDate2(str) {
+  // var str = moment(str).add(1, 'day');
+   var from = str.split("-");
+   
+   var str=from[2]+"-"+ from[1] +"-"+ from[0];
+   return (str);
 }

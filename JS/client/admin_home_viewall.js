@@ -1,7 +1,7 @@
 var status_array = [];
 
 function storeData(element, reasons) {
-    var table = document.getElementById(table1);
+    var table = document.getElementById("table1");
     var length = table1.rows.length;
     for (var i = 0; i < length - 1; i++) {
 
@@ -76,23 +76,23 @@ function displayItem(id) {
 }
 
 
-function logout() {
-    if (confirm("Are you sure?")) {
-        localStorage.clear();
-        window.location = "login.html";
-    } else {
-        return false;
-    }
-}
+// function logout() {
+//     if (confirm("Are you sure?")) {
+//         localStorage.clear();
+//         window.location = "login.html";
+//     } else {
+//         return false;
+//     }
+// }
 
-function verify() {
-    username = localStorage.getItem('USERNAME');
-    console.log(username);
-    if (username == null) {
+// function verify() {
+//     username = localStorage.getItem('USERNAME');
+//     console.log(username);
+//     if (username == null) {
 
-        document.location.href = "login.html";
-    }
-}
+//         document.location.href = "login.html";
+//     }
+// }
 
 
 function client_script() {
@@ -111,25 +111,37 @@ function client_script() {
             var result = this.responseText;
             result = JSON.parse(result);
             //  console.log(result[0]);
-            content = "<form id='myform'><div class='table '><table class='table table-responsive' id='table1'><thead><tr><th>No.</th><th>Owned By</th><th>Received Date</th><th>Purchase Title</th><th>View More</th><th>Action</th></tr></thead><tbody>";
+            content = "<form id='myform'><div class='table-responsive'><table class='table table-responsive' id='table1'><thead><tr><th>No.</th><th>Owned By</th><th>Received Date</th><th>Purchase Title</th><th>View More</th><th>Action</th></tr></thead><tbody>";
             var i = 1;
             result.forEach(function(element) {
                 //  console.log(content);
-                content += "<tr><td>" + i + "</td><td>" + element.username + "</td><td>" + element.Created_date + "</td><td>" + element.Purchase_title + "</td><td><button class='viewmore' onclick='return displayItem(" + element.Purchase_id + ");'>VIEW MORE</button></td><td><select class='select_action' id='save_status" + element.Purchase_id + "' onchange='displayBox(this.value," + element.Purchase_id + ",rejection_reason);'>" + "<option value='pending'>pending</option><option value='approved'>approved</option><option value='rejected'>rejected</option></select><input type='textbox' id='reason" + element.Purchase_id + "' placeholder='Enter Reason' style='visibility:hidden;'/></td><td style=" + "display:none" + ">" + element.Purchase_id + "</td></tr>";
+            var date=new Date(element.Created_date);
+            date=date.toISOString().split('T')[0]
+            date = toDate2(date);
+     
+
+
+
+
+                content += "<tr><td>" + i + "</td><td>" + element.username + "</td><td>" + date + "</td><td>" + element.Purchase_title + "</td><td><button class='viewmore btn btn-info' onclick='return displayItem(" + element.Purchase_id + ");'>VIEW MORE</button></td><td><select class='select_action' id='save_status" + element.Purchase_id + "' onchange='displayBox(this.value," + element.Purchase_id + ",rejection_reason);'>" + "<option value='pending'>pending</option><option value='approved'>approved</option><option value='rejected'>rejected</option></select><input class='form-group' type='textbox' id='reason" + element.Purchase_id + "' placeholder='Enter Reason' style='visibility:hidden;'/></td></tr>";
                 purchase_id.push(element.Purchase_id);
                 localStorage.setItem("pid", element.Purchase_id);
                 i++;
             });
             // AT THE END I HAVE THE SAVE BUTTON
-            content += "</tbody> </table><button type='button' onclick='storeData(purchase_id,rejection_reason);'> SAVE </button> </div></form>";
+            content += "</tbody> </table><button type='button' class='btn btn-success' onclick='storeData(purchase_id,rejection_reason);'> SAVE </button> </div></form>";
+  
             document.getElementById('display_purchase_details').innerHTML = content;
-
+              $('#table1').DataTable();
         }
+     
+         
     }
     var key = {
         'username': username,
         'token': token
     };
+    document.getElementById('welcome_username').innerHTML=username;
     key = JSON.stringify(key);
     httpObject.open('GET', 'http://192.168.1.230:8081/admin_view_all/' + key, true);
     httpObject.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
@@ -149,4 +161,11 @@ function displayBox(value, id) {
     };
     return rejection_reason;
 
+}
+function toDate2(str) {
+  // var str = moment(str).add(1, 'day');
+   var from = str.split("-");
+   
+   var str=from[2]+"-"+ from[1] +"-"+ from[0];
+   return (str);
 }

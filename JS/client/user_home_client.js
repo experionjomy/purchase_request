@@ -112,12 +112,29 @@ function arrayValidate(arr,title) {
 
 
 function logout() {
-    if (confirm("Are you sure?")) {
+
+
+bootbox.confirm({
+    message: "Are you sure?",
+    buttons: {
+        confirm: {
+            label: 'Yes',
+            className: 'btn-success'
+        },
+        cancel: {
+            label: 'No',
+            className: 'btn-danger'
+        }
+    },
+    callback: function (result) {
+        if(result){
+
         localStorage.clear();
         window.location = "login.html";
-    } else {
-        return false;
+       }
     }
+});
+
 }
 
 function addItem() {

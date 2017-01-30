@@ -35,3 +35,9 @@ module.exports.generatePassword = function() {
     return retVal;
 
 }
+module.exports.validation = function(username,email) {
+    if(username==""||email=="")
+    {
+        console.log("invalid credentials");
+    }
+    }
