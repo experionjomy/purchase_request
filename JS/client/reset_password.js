@@ -18,13 +18,9 @@ function resetPassword() {
                 } else {
                     console.log(result);
                     bootbox.alert("Password incorrect");
-
                 }
-
             }
-
         }
-
         var key = {
             'username': username,
             'token': token
@@ -35,35 +31,15 @@ function resetPassword() {
         httpObject1.send('oldPassword=' + oldPassword + '&newPassword=' + newPassword + '&confirmPassword=' + confirmPassword);
     }
     return false;
-
 }
 
 function check(newPassword, confirmPassword) {
-    if (newPassword != confirmPassword) {
-        bootbox.alert("Passwords does not match",function(){
-            location.reload();
+if (newPassword != confirmPassword) {
+        bootbox.alert("Passwords does not match", function() {
+            // location.reload();
         });
         return false;
     } else {
         return true;
     }
 }
-
-
-// function logout() {
-//     if (confirm("Are you sure?")) {
-//         localStorage.clear();
-//         window.location = "login.html";
-//     } else {
-//         return false;
-//     }
-// }
-
-// function verify() {
-//     username = localStorage.getItem('USERNAME');
-//     console.log(username);
-//     if (username == null) {
-
-//         document.location.href = "login.html";
-//     }
-// }

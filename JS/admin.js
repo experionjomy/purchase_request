@@ -24,13 +24,10 @@ var path = require('path');
 var verification = require('./verify.js');
 var adduser = require('./adduser.js');
 
-
-
 admin_router.route('/admin_view_all/:key')
     .get(function(req, res) {
         var key_value = req.params.key;
         key_value = JSON.parse(key_value);
-        console.log("token" + key_value.token);
         // var data = req.body;
         var username = key_value.username;
         var token = key_value.token;
@@ -38,7 +35,7 @@ admin_router.route('/admin_view_all/:key')
             console.log("invalid user");
         } else {
             if (verification.verify(token, username)) {
-                conn.query('SELECT Purchase_id,username,Status,Created_date,Purchase_title from Purchase_Details WHERE Status="PENDING"', function(err, rows) {
+                conn.query('SELECT Purchase_id,username,Status,Priority,Created_date,Purchase_title from Purchase_Details WHERE Status="PENDING"', function(err, rows) {
                     if (err) {
                         console.log(err);
                     } else {
@@ -51,10 +48,9 @@ admin_router.route('/admin_view_all/:key')
         }
     });
 
-
 var update_rejection_reason = require('./update_rejection_reason.js');
 admin_router.route('/rejection_reason_update')
-    .post(function(req, res) {
+    .put(function(req, res) {
         var reason_array = req.body;
         console.log("inside login" + reason_array);
         update_rejection_reason.Enter_Reason(reason_array);
@@ -72,7 +68,6 @@ admin_router.route('/admin_view_old/:key')
     .get(function(req, res) {
         var key_value = req.params.key;
         key_value = JSON.parse(key_value);
-        console.log("token" + key_value.token);
         var data = req.body;
         var username = key_value.username;
         var token = key_value.token;
@@ -80,7 +75,7 @@ admin_router.route('/admin_view_old/:key')
             console.log("invalid user");
         } else {
             if (verification.verify(token, username)) {
-                conn.query('SELECT Purchase_id,username,Status,Created_date,Purchase_title from Purchase_Details', function(err, rows) {
+                conn.query('SELECT Purchase_id,username,Status,Created_date,Purchase_title,Priority from Purchase_Details WHERE Status="approved" OR Status="rejected"', function(err, rows) {
                     if (err) {
                         console.log(err);
                     } else {
@@ -122,10 +117,11 @@ admin_router.route('/adduser/:key')
         console.log(password, p_word);
         var key_value = req.params.key;
         key_value = JSON.parse(key_value);
-        console.log("token" + key_value.token);
         var username = key_value.username;
         var token = key_value.token;
-        var js={"status":200};
+        var js = {
+            "status": "200"
+        };
         if (key_value.token == "") {
             console.log("invalid user");
         } else {
@@ -133,12 +129,12 @@ admin_router.route('/adduser/:key')
                 conn.query("insert into user (username,email,password) values ('" + userName + "','" + email + "','" + p_word + "')", function(err, rows) {
                     if (err) {
                         console.log(err);
-                        status=404;
+                        js.status = 404;
                     } else {
                         adduser.sendMail(email, userName, password);
                         var result_rows = JSON.stringify(rows);
                         console.log(result_rows);
-                        js.status=200;
+                        js.status = 200;
                         res.send(js);
                     }
                 });

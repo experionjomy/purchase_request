@@ -1,78 +1,141 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title> LOGIN</title>
+	<title> PURCHASE REQUEST</title>
+
+    <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="CSS/style.css">
 	<script type="text/javascript" src="JS/2.5.3-crypto-md5.js"></script>
+	<script type="text/javascript" src="JS/client/user_home_viewall.js"></script>
+	<script type="text/javascript" src="JS/client/login_client.js"></script>
+   <script type="text/javascript" src="JS/client/forgetpassword.js"></script>
+	   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="JS/bootbox.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
 </head>
 <body>
-<center>
-<div id="login">
-<h2>USER LOGIN</h2>
-ENTER USERNAME<input type="text" id="user_name" placeholder="Enter Username"><br>
-ENTER PASSWORD<input type="password" id="password" placeholder="Enter Password"><br>
-<button onclick="validate();">SUBMIT</button>
-<div id="printResult"></div>
+<div class="container">
+<div class="marge">
+<div class="row">
+<div class="col-sm-3 "></div>
+<div class="login col-sm-6">
+		<center>
+	 <h2 class="col align-self-center">
+      Purchase Request
+    </h2>
+	 <h3 class="col align-self-center">
+      Login here
+    </h3>
+    </center>
+       <div class="row">
+       <div class="col-sm-2"></div>
+       	      <div class="input-group  form-group col-sm-8 ">
+    			<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+    			<input type="text"  class="form-control " id="user_name" placeholder="Enter Username">
+  			</div>
+  		  <div class="col-sm-2"></div>
+       </div>
+       <div class="row">
+       	  <div class="col-sm-2"></div>
+       	      <div class="input-group form-group col-sm-8 ">
+     		<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+    		<input type="password" class="form-control" id="password" placeholder="Enter Password">
+  			</div>
+  			 <div class="col-sm-2"></div>
+       </div>
+       <div class="row">
+       		<div class="col-sm-2"></div>
+       		  <div class="col-sm-8 ">
+       		  <div class="form-group">
+  			<button class="btn btn-primary btn-block" onclick="validation();" >SUBMIT</button>
+        <button id="forget_password" class="btn btn-danger btn-block" class="btn">FORGOT PASSWORD</button>
+        <label><input type="checkbox" value="1" id="remember_me">Remember me</label>
+  			<div id="printResult"></div>
+  			</div>
+       		</div>
+       		<div class="col-sm-3"></div>
+       </div>
+
+		
+
 </div>
-</center>
+<div class="col-sm-2 "></div>
+
+</div>
+</div>
+</div>
+
 <script>
 
-function validate(){
-	//console.log("inside validate");
-	//var p_word=document.getElementById('password').value;
+
+
+
+// function validate(){
+// 	//console.log("inside validate");
+// 	//var p_word=document.getElementById('password').value;
     
-	var password=(Crypto.MD5(document.getElementById('password').value)).toString();
-	//console.log(password);
-	var httpObject=new XMLHttpRequest();
-	httpObject.onreadystatechange=function()
-	{
+// 	var password=(Crypto.MD5(document.getElementById('password').value)).toString();
+// 	//console.log(password);
+// 	var httpObject=new XMLHttpRequest();
+// 	httpObject.onreadystatechange=function()
+// 	{
 		
-		document.getElementById("printResult").innerHTML=this.readyState;
-		if(this.readyState=='4' && this.status=='200')
-		{
-			var result=this.responseText; 
-			result=JSON.parse(result);
-				if(result.status==200)
-				{
-					if(result.userType=="User"){
-					console.log(result);
-					document.getElementById("printResult").innerHTML=result.message;
-					document.location.href="user_home.html";
-						var set_username=result.username;
-						var set_token = result.token;
-						console.log(set_username,set_token);
-						localStorage.setItem('TOKEN',set_token);
-						localStorage.setItem('USERNAME',set_username);
+// 		document.getElementById("printResult").innerHTML=this.readyState;
+// 		if(this.readyState=='4' && this.status=='200')
+// 		{
+// 			var result=this.responseText; 
+// 			result=JSON.parse(result);
+// 				if(result.status==200)
+// 				{
+// 					if(result.userType=="User"){
+// 					console.log(result);
+// 					document.getElementById("printResult").innerHTML=result.message;
+// 					document.location.href="user_home.html";
+// 						var set_username=result.username;
+// 						var set_token = result.token;
+// 						console.log(set_username,set_token);
+// 						localStorage.setItem('TOKEN',set_token);
+// 						localStorage.setItem('USERNAME',set_username);
 
 						
 
-					}
-					else if(result.userType=="Admin"){
-					console.log(result.message);
-					document.getElementById("printResult").innerHTML=result.message;
-					document.location.href="admin_home_viewall.html";
-					var set_username=result.username;
-						var set_token = result.token;
+// 					}
+// 					else if(result.userType=="Admin"){
+// 					console.log(result.message);
+// 					document.getElementById("printResult").innerHTML=result.message;
+// 					document.location.href="admin_home_viewall.html";
+// 					var set_username=result.username;
+// 						var set_token = result.token;
 					
-						localStorage.setItem('TOKEN',set_token);
-						localStorage.setItem('USERNAME',set_username);
+// 						localStorage.setItem('TOKEN',set_token);
+// 						localStorage.setItem('USERNAME',set_username);
 
-					}
-					else{
-						window.location.reload();
-					}
-				}
-				else{
-					console.log(result.message);
-					document.getElementById("printResult").innerHTML=result.message;
-				}
-		}
-	}
+// 					}
+// 					else{
+// 						window.location.reload();
+// 					}
+// 				}
+// 				else{
+// 					console.log(result.message);
+// 					document.getElementById("printResult").innerHTML=result.message;
+// 				}
+// 		}
+// 	}
 	
-	httpObject.open('POST','http://192.168.1.230:8081',true);
-	httpObject.setRequestHeader('content-type','application/x-www-form-urlencoded');
-	httpObject.send('eid='+document.getElementById('user_name').value+'&password='+password);
-}
+// 	httpObject.open('POST','http://192.168.1.230:8081',true);
+// 	httpObject.setRequestHeader('content-type','application/x-www-form-urlencoded');
+// 	httpObject.send('eid='+document.getElementById('user_name').value+'&password='+password);
+// }
 </script>
 </body>
 </html>

@@ -8,6 +8,7 @@
  
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script type="text/javascript" src="JS/client/user_home_viewrejected.js"></script>
+  <script type="text/javascript" src="JS/client/logout.js"></script>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<!-- jQuery library -->
@@ -16,7 +17,14 @@
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="CSS/user_home_viewall.css">
+
+
+  <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" type="text/css" href="CSS/dataTables.bootstrap.min.css">
+  <script type="text/javascript" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 	<!-- <link rel="stylesheet" type="text/css" href="CSS/admin_home_viewall.css"> -->
+  <link rel="stylesheet" type="text/css" href="CSS/user_home.css">  
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
 </head>
 <body onunload="function clear(){}" onload="verify();">
 
@@ -43,10 +51,10 @@
 <!-- SIDE BARS -->
 <div class="hov col-sm-3">
 <ul class="nav nav-pills nav-stacked">
-  <li><a href="user_home.html">NEW REQUEST</a></li>
-  <li><a href="user_home_viewall.html">VIEW ALL REQUEST</a></li>
-  <li class="active"><a href="#">VIEW REJECTED REQUEST</a></li>
-  <li><a href="reset_password.html">RESET PASSWORD</a></li>
+  <li><a href="user_home.html"><b>NEW REQUEST</b></a></li>
+  <li><a href="user_home_viewall.html"><b>VIEW ALL REQUEST</b></a></li>
+  <li class="active"><a href="#"><b>VIEW REJECTED REQUEST</b></a></li>
+  <li><a href="reset_password.html"><b>RESET PASSWORD</b></a></li>
 </ul>
 </div>
 <div id="display_purchase_details" class="col-sm-8">
@@ -58,5 +66,38 @@ client_script();
 </script>
 </div>
 </div>
+<div id="fullCalModal" class="modal fade">
+   <div class="modal-dialog modal-lg">
+       <div class="modal-content">
+           <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+               <bold><h3 id="modalTitle" class="modal-title"></h3></bold>
+    <div class="panel-heading col-sm-12" id="Details_data">
+
+<!-- <div class="col-sm-8 col-sm-offset-4">
+<h4><div class="style"><span ><b>Purchase Title:</b></span><b><div class="stylevalue" id="purchase_title"></div></b></div></h4>
+</div> -->
+
+<div id="left "class="col-sm-6">
+  
+  <h5><div class="style"><span class=" col-sm-6"><b>Related Project:</b></span><div class="stylevalue" id="related_project"></div></div></h5>
+    <h5><div class="style"><span class=" col-sm-6"><b>Reason:</b></span><div class="stylevalue" id="reason"></div></div></h5>
+</div>
+<div id="right"class=" col-sm-6">
+  <h5><div class="style"><span class=" col-sm-6"><b>Priority:</b></span><div class="stylevalue" id="priority"></div></div></h5>
+  <h5><div class="style"><span class=" col-sm-6"><b>Created Date:</b></span><div class="stylevalue" id="created_date"></div></div></h5>
+
+</div>
+</div>
+
+           </div>
+           <div id="modalBody" class="modal-body "></div>
+           <div class="modal-footer">
+               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+               
+           </div>
+       </div>
+   </div>
+</div> 
 </body>
 </html>

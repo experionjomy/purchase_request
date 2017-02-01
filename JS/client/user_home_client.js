@@ -1,4 +1,10 @@
-var count=0;
+ username = localStorage.getItem('USERNAME');
+   // document.getElementById('welcome_username').innerHTML = username;
+    if (username == null) {
+        document.location.href = "login.html";
+    }
+
+var count = 0;
 $(document).ready(function() {
     $('#change_password').click(function() {
         $('#reset_data').toggle();
@@ -23,16 +29,14 @@ function sendData() {
             result = JSON.parse(result);
             if (result.status == 200) {
                 console.log(result);
-               bootbox.alert("Request Send successfully!!",function(){
-                location.reload();
-               });
-                //location.reload();
-            } else {
-              
-                 bootbox.alert("Request Cannot be sent!!",function(){
+                bootbox.alert("Request Send successfully!!", function() {
                     location.reload();
-                 });
-                   
+                });
+            } else {
+                bootbox.alert("Request Cannot be sent!!", function() {
+                    location.reload();
+                });
+
             }
         }
 
@@ -67,7 +71,7 @@ function sendData() {
         itemdemo.description = arr[1];
         itemdemo.quantity = arr[2];
         item_object.items.push(itemdemo);
-        if(!arrayValidate(arr,item_object.purchase_title_p)){
+        if (!arrayValidate(arr, item_object.purchase_title_p)) {
             return false;
         }
 
@@ -86,55 +90,27 @@ function sendData() {
 
 
 
-function arrayValidate(arr,title) {
+function arrayValidate(arr, title) {
 
     var rejex = /^[a-zA-Z\s]+$/;
-    if(rejex.test(title)&&title.length<5)
-    {
-    bootbox.alert("Invalid Purchase title");
+    if (rejex.test(title) && title.length < 2) {
+        bootbox.alert("Invalid Purchase title");
         return false;
     }
 
     if (arr[0].length < 1) {
-     bootbox.alert("invalid Item name");
+        bootbox.alert("invalid Item name");
         return false;
     }
     if (arr[1].length < 5 || !isNaN(arr[1])) {
- bootbox.alert("invalid Item description");
+        bootbox.alert("invalid Item description");
         return false;
     }
     if (arr[2].length < 1 || isNaN(arr[2])) {
-    bootbox.alert("invalid quantity");
+        bootbox.alert("invalid quantity");
         return false;
     }
     return true;
-}
-
-
-function logout() {
-
-
-bootbox.confirm({
-    message: "Are you sure?",
-    buttons: {
-        confirm: {
-            label: 'Yes',
-            className: 'btn-success'
-        },
-        cancel: {
-            label: 'No',
-            className: 'btn-danger'
-        }
-    },
-    callback: function (result) {
-        if(result){
-
-        localStorage.clear();
-        window.location = "login.html";
-       }
-    }
-});
-
 }
 
 function addItem() {
@@ -147,6 +123,7 @@ function addItem() {
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
     var cell4 = row.insertCell(3);
+
     var input1 = document.createElement("input");
     var input2 = document.createElement("input");
     var input3 = document.createElement("input");
@@ -154,33 +131,35 @@ function addItem() {
     cell1.appendChild(input1);
     input1.style.width = "90%";
     input1.setAttribute("class", elementId + "1" + "col-sm-2 form-control");
+    input1.setAttribute("placeholder","Enter item name");
     console.log(elementId + "1");
     cell2.appendChild(input2);
     input2.style.width = "90%";
-    input2.setAttribute("id", elementId + "2" );
+    input2.setAttribute("id", elementId + "2");
     input2.setAttribute("class", elementId + "1" + "col-sm-2 form-control");
+    input2.setAttribute("placeholder","Enter item description");
     console.log(elementId + "2");
     cell3.appendChild(input3);
     input3.setAttribute("class", elementId + "1" + "col-sm-2 form-control");
     input3.style.width = "90%";
     input3.setAttribute("id", elementId + "3");
+    input3.setAttribute("placeholder","Enter quantity")
     cell4.appendChild(input4);
     input4.style.width = "90%";
     input4.setAttribute("id", "delete");
-     input4.setAttribute("class", elementId + "1" + "col-sm-2 btn btn-danger glyphicon glyphicon-remove");
+    input4.setAttribute("class", elementId + "1" + "col-sm-2 btn btn-danger glyphicon glyphicon-remove");
     input4.type = "button";
     input4.onclick = function() {
         count--;
-        if(count<1)
-        {
+        if (count < 1) {
             bootbox.alert("There should be atleast one item in the request");
             count++;
-            return false;   
+            return false;
         }
         // this.parentNode.parentNode.removeChild(this);
+
         this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
-    
+        bootbox.alert("Are you sure you want to remove this");
     };
     input4.innerHTML = "delete";
 }
-

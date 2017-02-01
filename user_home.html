@@ -11,10 +11,11 @@
 	<!-- jQuery library -->
 	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
    <script type="text/javascript" src="JS/client/user_home_client.js"></script>
+    <script type="text/javascript" src="JS/client/logout.js"></script>
    <script type="text/javascript" src="JS/bootbox.min.js"></script>
 	<!-- Latest compiled JavaScript -->
 	 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	 <link rel="stylesheet" type="text/css" href="CSS/user_home_viewall.css">  
+	 <link rel="stylesheet" type="text/css" href="CSS/user_home.css">  
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
    
 </head>
@@ -39,10 +40,10 @@
 <div class="row">
 <div class="hov col-sm-3  ">
 <ul class="nav nav-pills nav-stacked ">
-  <li class="active"><a href="#">NEW REQUEST</a></li>
-  <li><a href="user_home_viewall.html">VIEW OLD REQUEST</a></li>
-  <li><a href="user_home_viewrejected.html">VIEW REJECTED REQUEST</a></li>
-  <li><a href="reset_password.html">RESET PASSWORD</a></li>
+  <li class="active"><a href="#"><strong>NEW REQUEST</strong></a></li>
+  <li><a href="user_home_viewall.html"><strong>VIEW OLD REQUEST</strong></a></li>
+  <li><a href="user_home_viewrejected.html"><strong>VIEW REJECTED REQUEST</strong></a></li>
+  <li><a href="reset_password.html"><strong>RESET PASSWORD</strong></a></li>
 
 </ul>
 </div>
@@ -158,6 +159,21 @@
 var username=localStorage.getItem('USERNAME');
 var token=localStorage.getItem('TOKEN');
 document.getElementById('welcome_username').innerHTML=username;
+// var d = new Date();
+//     var time = d.getHours();
+
+//     if (time < 12) 
+//       {
+//       alert("Good morning!");
+//       }
+//     if (time > 12 && time <= 4) 
+//       {
+//       alert("Good afternoon!");
+//       }
+//     if (time > 12) 
+//       {
+//       alert("Good Evening");
+//       }
 </script>
 </body>
 <!-- <footer>&copy jomy jose</footer> -->

@@ -6,9 +6,7 @@ thead{
 	background-color:#222;
 	color: white;
 }
-tbody{
-	background-color: #decba5;
-}
+
 #viewmore{
 	padding: 8px;
 	border-style: none;
@@ -28,9 +26,8 @@ tbody{
 }
 
 .panel-default>.panel-heading{
-	background-color:#e8d4a2;
 
-	float: left;
+
 	 padding-right: 0px; 
   padding-left: 0px; 
 }

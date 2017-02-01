@@ -23,41 +23,31 @@ var js = {
 };
 
 function callInsertion(postObject) {
-
     return new Promise(function(resolve, reject) {
-
         conn.query('INSERT INTO Purchase_Details SET ?', postObject, function(err, result) {
             if (err) {
                 reject();
             } else {
 
-                resolve()
+                resolve(result.insertId);
             }
-
-
         });
     });
 }
 
-function findMax() {
-
+function findMax(id) {
     return new Promise(function(resolve, reject) {
-
         conn.query('SELECT MAX(Purchase_id) as maximum FROM Purchase_Details', function(err, result) {
             if (err) {
                 reject();
             } else {
-
-                resolve(result[0].maximum);
+                resolve(id);
             }
-
-
         });
     });
 }
 
 function insertnewData(item, max) {
-
     return new Promise(function(resolve, reject) {
         var j = 0;
         for (var i = 0; i < item.length; i++) {
@@ -80,11 +70,8 @@ function insertnewData(item, max) {
                 if (j == item.length) {
                     resolve();
                 }
-
             });
-
         }
-
     });
 }
 
@@ -111,19 +98,15 @@ module.exports.enter_Purchasedata = function(res, data, username) {
     };
     //DATABASE Purchase_Request
     var a;
-
     callInsertion(postObject)
-        .then(function() {
-
-            findMax()
+        .then(function(id) {
+            findMax(id)
                 .then(function(max) {
-
                     insertnewData(item, max)
                         .then(function() {
                             js.status = 200;
                             js.message = "success";
                             res.send(js);
-
                         })
                         .catch(function() {
                             js.status = 403;
@@ -135,7 +118,6 @@ module.exports.enter_Purchasedata = function(res, data, username) {
 }
 
 module.exports.callValidation = function(data, username) {
-
     return new Promise(function(resolve, reject) {
         var purchase_title = data.purchase_title_p;
         var assigned_to = data.assigned_to_p;
@@ -144,14 +126,12 @@ module.exports.callValidation = function(data, username) {
         var item_category = data.item_category_p;
         var item = data.items;
         var userName = username;
-        console.log(data.items);
-
         if (data.items.length < 1) {
             console.log("No Items in the request");
         } else {
             var rejex = /^[a-zA-Z\s]+$/;
-            if (rejex.test(validator.trim(data.purchase_title_p))&& validator.trim(data.purchase_title_p).length>4) {
-                 console.log("lenth is"+validator.trim(data.purchase_title_p).length);
+            if (rejex.test(validator.trim(data.purchase_title_p)) && validator.trim(data.purchase_title_p).length > 4) {
+                console.log("lenth is" + validator.trim(data.purchase_title_p).length);
 
                 for (i = 0; i < data.items.length; i++) {
                     if (validator.isNumeric(validator.trim(data.items[i].quantity))) {
@@ -171,7 +151,7 @@ module.exports.callValidation = function(data, username) {
                         }
                     } else {
                         console.log("Quantity should be a number");
-                        console.log("lenth is"+validator.trim(data.purchase_title_p).length);
+                        console.log("lenth is" + validator.trim(data.purchase_title_p).length);
                         reject();
                     }
                 }

@@ -1,13 +1,23 @@
 body{
-	background-color: #01295c;
+	  background : url("4.jpg") no-repeat center center fixed;
+     -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+
 }
-#login{
+.btn-submit{
+	float: right;
+	clear: both;
+}
+.marge{
+	margin-top: 150px;
+}
+/*#login{
 	width: 40%;
-	background-color:#aca095;
-/*	border-style: outset;*/
-	margin: 180px 0 0 0px;
-	 box-shadow: 15px 10px 15px #888888;
-	 border-radius: 5px;
+	background-color:#050f2c;
+
 
 }
 #login h2{
@@ -36,7 +46,13 @@ body{
 	border-style: outset;
 	padding: 12px;
 	font-size: 16px;
-}
+}*/
 /*body{
 	background-image: url("purchase (1).png")
 }*/
+.login{
+	border-style: outset;
+		/*background-color:#003666;*/
+		color: white;
+
+}

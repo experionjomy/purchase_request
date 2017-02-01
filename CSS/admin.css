@@ -1,13 +1,39 @@
+body{
+	  background : url("11.jpg") no-repeat center center fixed;
+     -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+b{
+	font-size: 15px;
+}
+input{
+	background-color: beige !important;
+}
+th{
+	background-color: #222;
+	color: white;
+}
+.col-sm-8{
+	background-color: #decba5;
+	padding-top: 25px;
+}
 
-#adduser{
-	clear:both;
-	float: left;
+.well{
+	background-color: beige;
+	color: beige;
+	padding: 0px;
 }
-.display{
-	display: inline;
+.approved{
+	background-color: #D2EACB !important;
+	color: #D2EACB;
 }
-@media only screen and (min-width: 375px) {
-.col-sm-9{
-	float: none !important;
+
+.glyphicon-exclamation-sign{
+	color: red;
+
 }
+.purchase{
+	background-color: inherit;
 }

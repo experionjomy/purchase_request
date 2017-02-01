@@ -22,27 +22,23 @@ var js = {
     "message": "success"
 }
 
-
 module.exports.Update_Status = function(status_update_array, res) {
     c = 0;
-    total=0;
-    // for (var i = 0; i < status_update_array.length; i++){
+    total = 0;
     status_update_array.forEach(function(element) {
-        total++;
+            total++;
             if (element.status_of_item == 'approved') {
                 c++;
                 console.log(c);
-                
+
             }
             conn.query('UPDATE Purchase_Details SET Status= ? WHERE Purchase_id= ?', [element.status_of_item, element.purchase_id], function(err, rows) {
-                
+
                 if (err) {
                     console.log(err);
-                     js.message = "failed";
-                
-                } else {
-                   
-                }
+                    js.message = "failed";
+
+                } 
             });
         })
         // }
@@ -50,14 +46,15 @@ module.exports.Update_Status = function(status_update_array, res) {
         conn.query('SELECT user.username,email,Purchase_id, Created_date ,Purchase_title FROM Purchase_Details INNER JOIN user WHERE user.username=Purchase_Details.username AND Purchase_id=? AND Status="approved" ', [status_update_array[i].purchase_id], function(err, rows) {
             console.log(rows);
             if (err) {
-                console.log(err); js.message = 'failed';
+                console.log(err);
+                js.message = 'failed';
             } else {
-                if(rows.length>0) {
+                if (rows.length > 0) {
 
                     console.log("send mail");
-                rows = JSON.stringify(rows);
-                rows = JSON.parse(rows);
-                sendMail(rows[0], res, c);
+                    rows = JSON.stringify(rows);
+                    rows = JSON.parse(rows);
+                    sendMail(rows[0], res, c);
                 }
             }
         });
@@ -76,7 +73,7 @@ var sendMail = function(rows, res, c) {
             pass: 'bugtracker' // Your password
         }
     });
-    text = "Your " + rows.Purchase_title + " made on " + rows.Created_date + " has been approved";
+    text = "Your " + rows.Purchase_title + " request made on " + rows.Created_date + " has been approved";
     var mailOptions = {
         from: 'bugtrackerndm@gmail.com',
         to: rows.email,
@@ -90,7 +87,6 @@ var sendMail = function(rows, res, c) {
         } else {
             if (mail == c) {
                 mail = 0;
-
             }
         }
     });

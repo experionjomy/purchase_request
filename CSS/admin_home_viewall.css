@@ -1,6 +1,15 @@
 body{
-	width: 80%;
+/*	width: 80%;*/
 	margin: auto;
+
+	 background : url("11.jpg") no-repeat center center fixed;
+     -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+
+
 }
 #welcome{
 	border-style: outset;
