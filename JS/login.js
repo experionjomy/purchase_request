@@ -57,7 +57,7 @@ main_router.post('/password', function(request, res) {
                 var passmd5 = md5(pass);
                 var data = JSON.stringify(rows);
                 var json = JSON.parse(data);
-                forgetPassword_sendmail.sendMail(pass, json[0].email,username);
+                forgetPassword_sendmail.sendMail(pass, json[0].email,username,res);
         
                 console.log(json[0]);
                 
@@ -74,11 +74,22 @@ main_router.post('/password', function(request, res) {
 });
 
 
-/*main_router.post('forget_password_reset',(function(req,res){
-
-	console.log("dshfksdjf")
-});*/
-
+main_router.post('/forget_password_reset',function(req,res){
+   var url=req.body.url;
+   var password_new=req.body.password_new;
+     var decoded = jwt.verify(url, 'jomyjose');
+       var username=decoded.username;
+       console.log(username);
+       conn.query('UPDATE user SET password=? WHERE username=?',[password_new,username], function(err, rows) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(rows);
+                var result_rows = JSON.stringify(rows);
+                res.send(result_rows);
+            }
+        });
+});
 
 
 

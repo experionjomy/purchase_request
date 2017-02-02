@@ -80,7 +80,7 @@ function client_script2(id) {
             result.forEach(function(element) {
 
                 console.log(content);
-                content += "<tr><td>" + i + "</td><td>" + element.Item_name + "</td><td>" + element.Item_description + "</td><td>" + element.Quantity + "</td></tr>";
+                content += "<tr><td>" + i + "</td><td>" + element.Item_name + "</td><td>  <a href='#' data-toggle='popover' title='Item Description' data-content='"+element.Item_description+"'>Item Description</a></td><td>" + element.Quantity + "</td></tr>";
                 i++;
             });
             // AT THE END I HAVE THE SAVE BUTTON
@@ -91,13 +91,11 @@ function client_script2(id) {
                   );
             //$('#modalTitle').html(event.title);
            $('#modalBody').html((content));
-          
+           $(document).ready(function(){
+                $('[data-toggle="popover"]').popover(); 
+            });
             $('#fullCalModal').modal({backdrop:"static"});
-           // document.getElementById('Item_List_data').innerHTML = content;
-            //$('#table1').DataTable();
-            //$('#table1').DataTable();
-            //document.getElementById('Item_List_data').innerHTML = content;
-            //$('#table1').DataTable();
+        
         }
     }
     var username = localStorage.getItem('USERNAME');

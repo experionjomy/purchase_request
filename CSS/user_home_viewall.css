@@ -31,7 +31,15 @@ thead{
 	 padding-right: 0px; 
   padding-left: 0px; 
 }
-
+.modal-title{
+    text-align: center;
+}
+/*#left{
+      margin-top: 23px;
+}
+#modalTitle{
+  text-align: center;
+}*/
 /*.panel-heading {
   padding: 0px 0px;
  

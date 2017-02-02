@@ -29,6 +29,7 @@ function client_script() {
             content += "</tbody> </table> </div></form>";
             document.getElementById('display_purchase_details_old').innerHTML = content;
             $('#table1').DataTable();
+
         }
     }
     var key = {
@@ -83,7 +84,7 @@ function client_script2(id) {
             document.getElementById("owner").innerHTML = result[0].username;
             result.forEach(function(element) {
                 console.log(content);
-                content += "<tr><td>" + i + "</td><td>" + element.Item_name + "</td><td>" + element.Item_description + "</td><td>" + element.Quantity + "</td></tr>";
+                content += "<tr><td>" + i + "</td><td>" + element.Item_name + "</td><td>  <a href='#' data-toggle='popover' title='Item Description' data-content='"+element.Item_description+"'>Item Description</a></td><td>" + element.Quantity + "</td></tr>";
                 i++;
             });
             // AT THE END I HAVE THE SAVE BUTTON
@@ -97,7 +98,9 @@ function client_script2(id) {
                   );
             //$('#modalTitle').html(event.title);
            $('#modalBody').html((content));
-          
+           $(document).ready(function(){
+                $('[data-toggle="popover"]').popover(); 
+            });
             $('#fullCalModal').modal({backdrop:"static"});
            // document.getElementById('Item_List_data').innerHTML = content;
             //$('#table1').DataTable();

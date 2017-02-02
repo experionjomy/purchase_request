@@ -23,7 +23,7 @@ module.exports.Enter_Reason = function(reason_array) {
                 console.log(err);
             } else {
                 console.log(rows);
-                sendMail(rows[0], res, c);
+                // sendMail(rows[0], res, c);
             }
         });
     }

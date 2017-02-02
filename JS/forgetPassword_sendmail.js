@@ -37,7 +37,7 @@ var js={"status":"","message":""}
         if (!error) {
             console.log(info);
             js.status=200;
-            js.message=success;
+            js.message="success";
             res.send(js);
         }
 

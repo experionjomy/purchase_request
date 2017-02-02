@@ -19,7 +19,7 @@ var c;
 var mail = 0;
 var main_router = express.Router();
 var js = {
-    "message": "success"
+    "message": ""
 }
 
 module.exports.Update_Status = function(status_update_array, res) {
@@ -30,6 +30,7 @@ module.exports.Update_Status = function(status_update_array, res) {
             if (element.status_of_item == 'approved') {
                 c++;
                 console.log(c);
+                console.log("test1");
 
             }
             conn.query('UPDATE Purchase_Details SET Status= ? WHERE Purchase_id= ?', [element.status_of_item, element.purchase_id], function(err, rows) {
@@ -37,6 +38,7 @@ module.exports.Update_Status = function(status_update_array, res) {
                 if (err) {
                     console.log(err);
                     js.message = "failed";
+                    console.log("test2");
 
                 } 
             });
@@ -48,24 +50,31 @@ module.exports.Update_Status = function(status_update_array, res) {
             if (err) {
                 console.log(err);
                 js.message = 'failed';
+                console.log("test3");
             } else {
+
                 if (rows.length > 0) {
 
                     console.log("send mail");
                     rows = JSON.stringify(rows);
                     rows = JSON.parse(rows);
                     sendMail(rows[0], res, c);
+
                 }
             }
         });
     }
-    console.log(js);
-    res.send(js);
+     js.message = "success";
+  res.send(js);
 
 }
 var sendMail = function(rows, res, c) {
+
     mail++;
     console.log(rows.email);
+    console.log("test1");
+     js.message = "success";
+
     var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
@@ -84,6 +93,7 @@ var sendMail = function(rows, res, c) {
     transporter.sendMail(mailOptions, function(error, info) {
         if (!error) {
             console.log(info);
+           // res.send(js);
         } else {
             if (mail == c) {
                 mail = 0;

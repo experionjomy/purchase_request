@@ -21,7 +21,7 @@
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="JS/bootbox.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
 </head>
 <body>
 <div class="container">
@@ -80,62 +80,6 @@
 
 
 
-// function validate(){
-// 	//console.log("inside validate");
-// 	//var p_word=document.getElementById('password').value;
-    
-// 	var password=(Crypto.MD5(document.getElementById('password').value)).toString();
-// 	//console.log(password);
-// 	var httpObject=new XMLHttpRequest();
-// 	httpObject.onreadystatechange=function()
-// 	{
-		
-// 		document.getElementById("printResult").innerHTML=this.readyState;
-// 		if(this.readyState=='4' && this.status=='200')
-// 		{
-// 			var result=this.responseText; 
-// 			result=JSON.parse(result);
-// 				if(result.status==200)
-// 				{
-// 					if(result.userType=="User"){
-// 					console.log(result);
-// 					document.getElementById("printResult").innerHTML=result.message;
-// 					document.location.href="user_home.html";
-// 						var set_username=result.username;
-// 						var set_token = result.token;
-// 						console.log(set_username,set_token);
-// 						localStorage.setItem('TOKEN',set_token);
-// 						localStorage.setItem('USERNAME',set_username);
-
-						
-
-// 					}
-// 					else if(result.userType=="Admin"){
-// 					console.log(result.message);
-// 					document.getElementById("printResult").innerHTML=result.message;
-// 					document.location.href="admin_home_viewall.html";
-// 					var set_username=result.username;
-// 						var set_token = result.token;
-					
-// 						localStorage.setItem('TOKEN',set_token);
-// 						localStorage.setItem('USERNAME',set_username);
-
-// 					}
-// 					else{
-// 						window.location.reload();
-// 					}
-// 				}
-// 				else{
-// 					console.log(result.message);
-// 					document.getElementById("printResult").innerHTML=result.message;
-// 				}
-// 		}
-// 	}
-	
-// 	httpObject.open('POST','http://192.168.1.230:8081',true);
-// 	httpObject.setRequestHeader('content-type','application/x-www-form-urlencoded');
-// 	httpObject.send('eid='+document.getElementById('user_name').value+'&password='+password);
-// }
 </script>
 </body>
 </html>

@@ -192,7 +192,7 @@ function client_script2(id) {
 
             result.forEach(function(element) {
                 console.log(content);
-                content += "<tr><td>" + i + "</td><td>" + element.Item_name + "</td><td>" + element.Item_description + "</td><td>" + element.Quantity + "</td></tr>";
+                content += "<tr><td>" + i + "</td><td>" + element.Item_name + "</td><td>  <a href='#' data-toggle='popover' title='Item Description' data-content='"+element.Item_description+"'>Item Description</a></td><td>" + element.Quantity + "</td></tr>";
                 i++;
             });
 
@@ -205,6 +205,9 @@ function client_script2(id) {
            $('#modalBody').html((content));
           
             $('#fullCalModal').modal({backdrop:"static"});
+             $(document).ready(function(){
+                $('[data-toggle="popover"]').popover(); 
+            });
             // document.getElementById('Item_List_data').innerHTML = content;
             //$('#table1').DataTable();
         }

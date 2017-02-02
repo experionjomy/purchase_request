@@ -4,12 +4,13 @@
 	
 	<title>View More</title>
 	<script type="text/javascript" src="JS/client/user_home_viewall.js"></script>
+  <script type="text/javascript" src="JS/client/print_pdf.js"></script>
 	   <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	 <!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
 	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
@@ -21,7 +22,7 @@
       <script type="text/javascript" src="JS/client/logout.js"></script>
   <script type="text/javascript" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
   <link rel="stylesheet" type="text/css" href="CSS/user_home.css">  
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
 <script type="text/javascript" src="JS/client/moment.min.js"></script>
 
 </head>
@@ -80,14 +81,18 @@ client_script();
            <div class="modal-header">
                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
                <bold><h3 id="modalTitle" class="modal-title"></h3></bold>
-            <div class="panel-heading col-sm-12" >
+                 <div class="pull-right">
+                <button class="btn btn-danger" onclick="printDiv()"><span class="glyphicon glyphicon-print"></span>Print</button>
+                <button class="btn btn-default" onclick="pdfDiv()" ><span class="glyphicon glyphicon-file"></span> save pdf</button>
+               </div> 
+            <div class="panel-heading col-sm-12" id="Details_data" >
 <!-- 
 <div class="col-sm-8 col-sm-offset-4">
 <h4><div class="style"><span ><b>Purchase Title:</b></span><b><div class="stylevalue" id="purchase_title"></div></b></div></h4>
 </div> -->
 
-<div id="left "class="col-sm-6">
-  
+<div id="left" class="col-sm-6">
+
   <h5><div class="style"><span class=" col-sm-6"><b>Related Project:</b></span><div class="stylevalue" id="related_project"></div></div></h5>
     <h5><div class="style"><span class=" col-sm-6"><b>Status:</b></span><div class="stylevalue" id="status"></div></div></h5>
 </div>
@@ -100,6 +105,7 @@ client_script();
 
            </div>
            <div id="modalBody" class="modal-body "></div>
+
            <div class="modal-footer">
                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                

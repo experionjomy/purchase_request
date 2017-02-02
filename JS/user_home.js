@@ -130,7 +130,7 @@ module.exports.callValidation = function(data, username) {
             console.log("No Items in the request");
         } else {
             var rejex = /^[a-zA-Z\s]+$/;
-            if (rejex.test(validator.trim(data.purchase_title_p)) && validator.trim(data.purchase_title_p).length > 4) {
+            if (rejex.test(validator.trim(data.purchase_title_p)) && validator.trim(data.purchase_title_p).length > 2) {
                 console.log("lenth is" + validator.trim(data.purchase_title_p).length);
 
                 for (i = 0; i < data.items.length; i++) {

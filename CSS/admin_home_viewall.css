@@ -77,3 +77,23 @@ li{
 td{
 	padding: 20px;
 }*/
+@media only screen and (min-width: 375px) {
+	th{
+	min-width: 80px !important;
+	}
+	.style{
+		clear: both;
+		text-align: center;
+	}
+	/*.container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}*/
+
+}
+
+
+
+

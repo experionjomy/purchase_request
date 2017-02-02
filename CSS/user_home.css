@@ -50,7 +50,7 @@ th{
 	background-color: #decba5;
 }
 .panel-default>.panel-heading{
-	background-color: #02a388;
+	background-color: #f5f5f5;;
 	clear: left;
 }
 
@@ -59,7 +59,7 @@ th{
 }
 
 #Details_data{
-	background-color:#f5f5f5;
+	background-color:#f5f5f5 !important;
 }
 footer{
 	background-color: black;
@@ -82,15 +82,14 @@ footer{
 	.col-sm-7{
 		margin: auto;
 	}
-	/*.container-fluid {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}*/
+	.style{
+		clear: both;
+		padding-left: 10%;
+	}
+	.pull-right{
+		text-align: center;
+	}
 
 }
-
-
 
 
