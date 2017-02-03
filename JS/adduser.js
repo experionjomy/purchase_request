@@ -4,13 +4,13 @@ module.exports.sendMail = function(email, userName, password) {
     var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-            user: 'bugtrackerndm@gmail.com', // Your email id
-            pass: 'bugtracker' // Your password
+            user: 'purchaserequest3009@gmail.com', // Your email id
+            pass: '123456!@#' // Your password
         }
     });
     text = "Your username and password is successfully generated.Username is " + userName + '  password is ' + password;
     var mailOptions = {
-        from: 'bugtrackerndm@gmail.com',
+        from: 'purchaserequest3009@gmail.com',
         to: email,
         subject: 'purchase Request',
         text: text

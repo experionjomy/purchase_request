@@ -47,12 +47,13 @@ function displayItem(id) {
     localStorage.setItem("pid_rejected", id);
     //window.location.assign("user_home_viewrejected-more.html");
     //console.log(id);
-    var con=client_script2(id);
-  // console.log(client_script2());
-   console.log(con);
- 
+    var con = client_script2(id);
+    // console.log(client_script2());
+    console.log(con);
+
     return false;
 }
+
 function client_script2(id) {
     var get_purchase_id = id;
     console.log(get_purchase_id);
@@ -68,7 +69,7 @@ function client_script2(id) {
             content = "<form><div class='table table-responsive'><table class='table table-hover table-responsive panel panel-default' id='table1'><thead><tr><th>No.</th><th>Item Name</th><th>Item Description</th><th>Quantity</th></tr></thead><tbody>";
             var i = 1;
             // document.getElementById("purchase_title").innerHTML = result[0].Purchase_title;
-            title= result[0].Purchase_title;
+            title = result[0].Purchase_title;
             document.getElementById("related_project").innerHTML = result[0].Related_project;
             document.getElementById("priority").innerHTML = result[0].Priority;
             var date = new Date(result[0].Created_date);
@@ -76,26 +77,28 @@ function client_script2(id) {
             date = toDate2(date);
             document.getElementById("created_date").innerHTML = date;
             document.getElementById("reason").innerHTML = result[0].Rejection_reason;
-    
+
             result.forEach(function(element) {
 
                 console.log(content);
-                content += "<tr><td>" + i + "</td><td>" + element.Item_name + "</td><td>  <a href='#' data-toggle='popover' title='Item Description' data-content='"+element.Item_description+"'>Item Description</a></td><td>" + element.Quantity + "</td></tr>";
+                content += "<tr><td>" + i + "</td><td>" + element.Item_name + "</td><td>  <a href='#' data-toggle='popover' title='Item Description' data-content='" + element.Item_description + "'>Item Description</a></td><td>" + element.Quantity + "</td></tr>";
                 i++;
             });
             // AT THE END I HAVE THE SAVE BUTTON
             content += "</tbody> </table> </div></form>";
-             $('#modalTitle').html(
-               "Purpose:"+
-               title
-                  );
+            $('#modalTitle').html(
+                "Purpose:" +
+                title
+            );
             //$('#modalTitle').html(event.title);
-           $('#modalBody').html((content));
-           $(document).ready(function(){
-                $('[data-toggle="popover"]').popover(); 
+            $('#modalBody').html((content));
+            $(document).ready(function() {
+                $('[data-toggle="popover"]').popover();
             });
-            $('#fullCalModal').modal({backdrop:"static"});
-        
+            $('#fullCalModal').modal({
+                backdrop: "static"
+            });
+
         }
     }
     var username = localStorage.getItem('USERNAME');

@@ -13,7 +13,7 @@ function logout() {
         },
         callback: function(result) {
             if (result) {
-            	//localStorage.clear();
+                //localStorage.clear();
                 localStorage.removeItem('TOKEN');
                 localStorage.removeItem('USERNAME');
                 window.location = "login.html";

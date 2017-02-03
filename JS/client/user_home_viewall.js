@@ -18,13 +18,10 @@ function client_script() {
                     if (element.Status == "approved") {
                         content += "<tr style='background-color:#D2EACB;'><td >" + i + "</td><td>" + element.Purchase_title + "</td><td>" + element.Status + "</td><td>" + date + "</td><td>" + time + "</td><td>" + "<button id='viewmore' class='btn-info' onclick='displayItem(" + element.Purchase_id + ");'>View More</button>" + "</td></tr>";
 
-                    } 
-               else{
+                    } else {
                         content += "<tr ><td >" + i + "</td><td>" + element.Purchase_title + "</td><td>" + element.Status + "</td><td>" + date + "</td><td>" + time + "</td><td>" + "<button id='viewmore' class='btn-info' onclick='displayItem(" + element.Purchase_id + ");'>View More</button>" + "</td></tr>";
 
-                     }
-                       
-                    
+                    }
                     i++;
                 });
                 content += "</tbody> </table> </div>";
@@ -51,14 +48,14 @@ function displayItem(id) {
     // console.log("Inside displayItem");
     // document.location.href = "user_home_viewall-more.html";
 
-var con=client_script2(id);
-  // console.log(client_script2());
-   console.log(con);
+    var con = client_script2(id);
+    // console.log(client_script2());
+    console.log(con);
     localStorage.setItem("pid", id);
-     
+
     return false;
 
- 
+
 
 }
 
@@ -89,25 +86,27 @@ function client_script2(id) {
             console.log(result.Purchase_title);
             result.forEach(function(element) {
                 console.log(content);
-                content += "<tr><td>" + i + "</td><td>" + element.Item_name + "</td><td>  <a href='#' data-toggle='popover' title='Item Description' data-content='"+element.Item_description+"'>Item Description</a></td><td>" + element.Quantity + "</td></tr>";
+                content += "<tr><td>" + i + "</td><td>" + element.Item_name + "</td><td>  <a href='#' data-toggle='popover' title='Item Description' data-content='" + element.Item_description + "'>Item Description</a></td><td>" + element.Quantity + "</td></tr>";
                 i++;
             });
             // AT THE END I HAVE THE SAVE BUTTON
             content += "</tbody> </table> </div></form>";
             //document.getElementById('Item_List_data').innerHTML = content;
-             $('#modalTitle').html(
-               "Purpose:"+
-               title
-                  );
+            $('#modalTitle').html(
+                "Purpose:" +
+                title
+            );
             //$('#modalTitle').html(event.title);
-           $('#modalBody').html((content));
-          
-            $('#fullCalModal').modal({backdrop:"static"});
-            $(document).ready(function(){
-                
-                $('[data-toggle="popover"]').popover(); 
+            $('#modalBody').html((content));
+
+            $('#fullCalModal').modal({
+                backdrop: "static"
             });
-             }
+            $(document).ready(function() {
+
+                $('[data-toggle="popover"]').popover();
+            });
+        }
     }
 
     var username = localStorage.getItem('USERNAME');

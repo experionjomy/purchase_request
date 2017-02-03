@@ -57,9 +57,10 @@ main_router.post('/password', function(request, res) {
                 var passmd5 = md5(pass);
                 var data = JSON.stringify(rows);
                 var json = JSON.parse(data);
-                forgetPassword_sendmail.sendMail(pass, json[0].email,username,res);
-        
                 console.log(json[0]);
+                forgetPassword_sendmail.sendMails(pass, json[0].email,username,res);
+        
+       
                 
             }
             else{
@@ -74,7 +75,7 @@ main_router.post('/password', function(request, res) {
 });
 
 
-main_router.post('/forget_password_reset',function(req,res){
+main_router.put('/forget_password_reset',function(req,res){
    var url=req.body.url;
    var password_new=req.body.password_new;
      var decoded = jwt.verify(url, 'jomyjose');

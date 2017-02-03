@@ -78,13 +78,13 @@ var sendMail = function(rows, res, c) {
     var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-            user: 'bugtrackerndm@gmail.com', // Your email id
-            pass: 'bugtracker' // Your password
+            user: 'purchaserequest3009@gmail.com', // Your email id
+            pass: '123456!@#' // Your password
         }
     });
     text = "Your " + rows.Purchase_title + " request made on " + rows.Created_date + " has been approved";
     var mailOptions = {
-        from: 'bugtrackerndm@gmail.com',
+        from: 'purchaserequest3009@gmail.com',
         to: rows.email,
         subject: 'purchase Request',
         text: text

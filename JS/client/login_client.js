@@ -52,28 +52,28 @@ function validate(username, password) {
 
 
 $(function() {
- 
-                if (localStorage.chkbx && localStorage.chkbx != '') {
-                    $('#remember_me').attr('checked', 'checked');
-                    $('#user_name').val(localStorage.username);
-                    $('#password').val(localStorage.pass);
-                } else {
-                    $('#remember_me').removeAttr('checked');
-                    $('#user_name').val('');
-                    $('#password').val('');
-                }
- 
-                $('#remember_me').click(function() {
- 
-                    if ($('#remember_me').is(':checked')) {
-                        // save username and password
-                        localStorage.username = $('#user_name').val();
-                        localStorage.pass = $('#password').val();
-                        localStorage.chkbx = $('#remember_me').val();
-                    } else {
-                        localStorage.username = '';
-                        localStorage.pass = '';
-                        localStorage.chkbx = '';
-                    }
-                });
-            });
+
+    if (localStorage.chkbx && localStorage.chkbx != '') {
+        $('#remember_me').attr('checked', 'checked');
+        $('#user_name').val(localStorage.username);
+        $('#password').val(localStorage.pass);
+    } else {
+        $('#remember_me').removeAttr('checked');
+        $('#user_name').val('');
+        $('#password').val('');
+    }
+
+    $('#remember_me').click(function() {
+
+        if ($('#remember_me').is(':checked')) {
+            // save username and password
+            localStorage.username = $('#user_name').val();
+            localStorage.pass = $('#password').val();
+            localStorage.chkbx = $('#remember_me').val();
+        } else {
+            localStorage.username = '';
+            localStorage.pass = '';
+            localStorage.chkbx = '';
+        }
+    });
+});

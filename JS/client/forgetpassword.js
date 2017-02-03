@@ -9,24 +9,20 @@ $(document).ready(function() {
                         size: "small",
                         title: "Enter username",
                         callback: function(result) {
-                        console.log(result);
-                        if(result==null)
-                        {
-                            return;
-                        }
+                            console.log(result);
+                            if (result == null) {
+                                return;
+                            }
                             var username = escape(result);
                             if (username == "") bootbox.alert("enter username");
                             else {
                                 var httpObj1 = new XMLHttpRequest();
                                 httpObj1.onreadystatechange = function() {
                                     if (this.readyState == '4' && this.status == '200') {
-                                        var result=this.responseText;
-                                        result=JSON.parse(result);
+                                        var result = this.responseText;
+                                        result = JSON.parse(result);
                                         bootbox.alert(result);
-                                        
-
-                                    }
-                                    else{
+                                    } else {
                                         bootbox.alert(result);
                                     }
                                 };
@@ -34,8 +30,7 @@ $(document).ready(function() {
                                 httpObj1.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
                                 httpObj1.send('user_name=' + username);
                             }
-                       
-                   }
+                        }
                     });
 
                 } else {

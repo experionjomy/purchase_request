@@ -54,8 +54,8 @@
   				  <li><a href="add_user.html"><b>ADD USER</b></a></li>
 				</ul>
 			</div>
- <div class="col-sm-2"><div class="well" style="float:left">Well</div><span><b>Rejected</b></span></div>
-  <div class="col-sm-2"><div class="well approved" style="float:left">Well</div><span><b>Approved</b></span></div>
+ <div class="col-sm-2"><div class="well" style="float:left"><div id="well"></div></div><span><b>Rejected</b></span></div>
+  <div class="col-sm-2"><div class="well approved" style="float:left"><div id="well"></div></div><span><b>Approved</b></span></div>
 			<div id="display_purchase_details_old" class="col-sm-9">
 	
 			</div>
@@ -69,16 +69,16 @@
 </div>
 <div id="fullCalModal" class="modal fade">
    <div class="modal-dialog modal-lg">
-       <div class="modal-content">
+       <div id="mymodal" class="modal-content">
            <div class="modal-header">
 
-               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only"></span></button>
                <bold><h3 id="modalTitle" class="modal-title"></h3></bold> 
                <div class="pull-right">
                 <button class="btn btn-danger" onclick="printDiv()"><span class="glyphicon glyphicon-print"></span>Print</button>
                 <button class="btn btn-default" onclick="pdfDiv()" ><span class="glyphicon glyphicon-file"></span> save pdf</button>
                </div> 
-               <div class="panel-heading col-sm-12" >
+ <div class="panel-heading col-sm-12" >
 
 
 

@@ -32,7 +32,6 @@ th{
 #reset_data {
 
 	background-color: #decba5; 
-	float: left;
 }
 #addItem{
 	margin-left: 0px !important;
@@ -71,9 +70,15 @@ footer{
 	color: #FD7777;
 	padding: 0px;
 }
+#well{
+	width: 20px;
+}
 .approved{
 	background-color: #D2EACB !important;
 	color: #D2EACB;
+}
+.r{
+	margin-top:100px;
 }
 @media only screen and (min-width: 375px) {
 	th{

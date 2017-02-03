@@ -9,36 +9,42 @@ var jwt = require('jsonwebtoken');
 
 var nodemailer = require('nodemailer');
 var md5 = require('md5');
-
-module.exports.sendMail = function(password,email,username,res) {
-var js={"status":"","message":""}
-    var transporter = nodemailer.createTransport({
+var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-            user: 'bugtrackerndm@gmail.com', // Your email id
-            pass: 'bugtracker' // Your password
+          user: 'purchaserequest3009@gmail.com', // Your email id
+            pass: '123456!@#' // Your password
         }
     });
+
+module.exports.sendMails = function(password,email,username,res) {
+    console.log("inside sendMails");
+var js={"status":"","message":""}
+    
     var token = jwt.sign({
                     username: username
                 }, 'jomyjose', {
-                    expiresIn: 60 * 10000
+                    expiresIn: 86400
                 });
 
     text = "http://192.168.1.230:8081/forget_password.html?"+token;
     var mailOptions = {
-        from: 'bugtrackerndm@gmail.com',
+        from: 'purchaserequest3009@gmail.com',
         to: email,
         subject: 'purchase Request',
         html: text,
         text: text
     };
-    transporter.sendMail(mailOptions, function(error, info) {
+
+    transporter.sendMail(mailOptions,function(error, info) {
+        console.log("inside transporter");
         if (!error) {
             console.log(info);
             js.status=200;
             js.message="success";
             res.send(js);
+        }else{
+            console.log(error);
         }
 
     });

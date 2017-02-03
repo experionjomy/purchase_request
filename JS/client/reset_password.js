@@ -34,7 +34,7 @@ function resetPassword() {
 }
 
 function check(newPassword, confirmPassword) {
-if (newPassword != confirmPassword) {
+    if (newPassword != confirmPassword) {
         bootbox.alert("Passwords does not match", function() {
             // location.reload();
         });

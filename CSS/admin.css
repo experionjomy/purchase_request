@@ -25,6 +25,9 @@ th{
 	color: beige;
 	padding: 0px;
 }
+#well{
+	width: 20px;
+}
 .approved{
 	background-color: #D2EACB !important;
 	color: #D2EACB;

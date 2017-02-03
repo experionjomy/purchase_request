@@ -53,3 +53,11 @@ thead{
 }*/
 	
 
+
+@media print
+{    
+    .modal-header .close
+    {
+        display: none !important;
+    }
+}

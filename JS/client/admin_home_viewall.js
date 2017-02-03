@@ -1,5 +1,4 @@
 var status_array = [];
-
 function storeData(element, reasons) {
     var table = document.getElementById("table1");
     var length = table1.rows.length;
@@ -25,10 +24,10 @@ function storeData(element, reasons) {
             var result = this.responseText;
             result = JSON.parse(result);
             if (result.message == "success") {
-                bootbox.alert("Successfully saved status",function(){
+                bootbox.alert("Successfully saved status", function() {
                     window.location.reload();
                 });
-                
+
             }
         }
     }
@@ -73,12 +72,12 @@ function storeReason(reasons) {
 //-------------------------------------------------------------------------------------------------------------------------------
 
 function displayItem(id) {
-   /// window.location.assign("admin_home_viewall-more.html");
-    var con=client_script2(id);
+    /// window.location.assign("admin_home_viewall-more.html");
+    var con = client_script2(id);
     localStorage.setItem("pid", id);
-console.log(con);
-    
-     
+    console.log(con);
+
+
     return false;
 }
 
@@ -109,10 +108,9 @@ function client_script() {
                 date = date.toISOString().split('T')[0]
                 date = toDate2(date);
                 if (element.Priority == "Critical") {
-                content += "<tr><td>" + i + "</td><td>" + element.username + "</td><td>" + date + "</td><td>" + time + "</td><td>" + element.Purchase_title + "</td><td><span class='glyphicon glyphicon-exclamation-sign'></span>"+element.Priority+"</td><td><button class='viewmore btn btn-info' onclick='return displayItem(" + element.Purchase_id + ");'>VIEW MORE</button></td><td><select class='select_action form-control' id='save_status" + element.Purchase_id + "' onchange='displayBox(this.value," + element.Purchase_id + ",rejection_reason);'>" + "<option value='pending'>pending</option><option value='approved'>approved</option><option value='rejected'>rejected</option></select><input class='form-control' type='textbox' id='reason" + element.Purchase_id + "' placeholder='Enter Reason' style='visibility:hidden;'/></td></tr>";
-                }
-                else{
-                content += "<tr><td>" + i + "</td><td>" + element.username + "</td><td>" + date + "</td><td>" + time + "</td><td>" + element.Purchase_title + "</td><td>"+element.Priority+"</td><td><button class='viewmore btn btn-info' onclick='return displayItem(" + element.Purchase_id + ");'>VIEW MORE</button></td><td><select class='select_action form-control' id='save_status" + element.Purchase_id + "' onchange='displayBox(this.value," + element.Purchase_id + ",rejection_reason);'>" + "<option value='pending'>pending</option><option value='approved'>approved</option><option value='rejected'>rejected</option></select><input class='form-control' type='textbox' id='reason" + element.Purchase_id + "' placeholder='Enter Reason' style='visibility:hidden;'/></td></tr>";
+                    content += "<tr><td>" + i + "</td><td>" + element.username + "</td><td>" + date + "</td><td>" + time + "</td><td>" + element.Purchase_title + "</td><td><span class='glyphicon glyphicon-exclamation-sign'></span>" + element.Priority + "</td><td><button class='viewmore btn btn-info' onclick='return displayItem(" + element.Purchase_id + ");'>VIEW MORE</button></td><td><select class='select_action form-control' id='save_status" + element.Purchase_id + "' onchange='displayBox(this.value," + element.Purchase_id + ",rejection_reason);'>" + "<option value='pending'>pending</option><option value='approved'>approved</option><option value='rejected'>rejected</option></select><input class='form-control' type='textbox' id='reason" + element.Purchase_id + "' placeholder='Enter Reason' style='visibility:hidden;'/></td></tr>";
+                } else {
+                    content += "<tr><td>" + i + "</td><td>" + element.username + "</td><td>" + date + "</td><td>" + time + "</td><td>" + element.Purchase_title + "</td><td>" + element.Priority + "</td><td><button class='viewmore btn btn-info' onclick='return displayItem(" + element.Purchase_id + ");'>VIEW MORE</button></td><td><select class='select_action form-control' id='save_status" + element.Purchase_id + "' onchange='displayBox(this.value," + element.Purchase_id + ",rejection_reason);'>" + "<option value='pending'>pending</option><option value='approved'>approved</option><option value='rejected'>rejected</option></select><input class='form-control' type='textbox' id='reason" + element.Purchase_id + "' placeholder='Enter Reason' style='visibility:hidden;'/></td></tr>";
                 }
                 purchase_id.push(element.Purchase_id);
                 localStorage.setItem("pid", element.Purchase_id);
@@ -136,7 +134,6 @@ function client_script() {
     httpObject.send();
 }
 
-
 function displayBox(value, id) {
     console.log(id);
     if (value == 'rejected') {
@@ -150,15 +147,12 @@ function displayBox(value, id) {
     };
     return rejection_reason;
 }
-
 function toDate2(str) {
     // var str = moment(str).add(1, 'day');
     var from = str.split("-");
     var str = from[2] + "-" + from[1] + "-" + from[0];
     return (str);
 }
-
-
 
 function client_script2(id) {
     var get_purchase_id = id;
@@ -185,31 +179,29 @@ function client_script2(id) {
             date = date.toISOString().split('T')[0]
             date = toDate2(date);
             document.getElementById("created_date").innerHTML = date;
-              document.getElementById("created_time").innerHTML = time;
+            document.getElementById("created_time").innerHTML = time;
             document.getElementById("status").innerHTML = result[0].Status;
             document.getElementById("owner").innerHTML = result[0].username;
             console.log(result.Purchase_title);
-
             result.forEach(function(element) {
                 console.log(content);
-                content += "<tr><td>" + i + "</td><td>" + element.Item_name + "</td><td>  <a href='#' data-toggle='popover' title='Item Description' data-content='"+element.Item_description+"'>Item Description</a></td><td>" + element.Quantity + "</td></tr>";
+                content += "<tr><td>" + i + "</td><td>" + element.Item_name + "</td><td>  <a href='#' data-toggle='popover' title='Item Description' data-content='" + element.Item_description + "'>Item Description</a></td><td>" + element.Quantity + "</td></tr>";
                 i++;
             });
-
             content += "</tbody> </table> </div></form>";
             $('#modalTitle').html(
-               "Purpose:"+
-               title
-                  );
+                "Purpose:" +
+                title
+            );
             //$('#modalTitle').html(event.title);
-           $('#modalBody').html((content));
-          
-            $('#fullCalModal').modal({backdrop:"static"});
-             $(document).ready(function(){
-                $('[data-toggle="popover"]').popover(); 
+            $('#modalBody').html((content));
+
+            $('#fullCalModal').modal({
+                backdrop: "static"
             });
-            // document.getElementById('Item_List_data').innerHTML = content;
-            //$('#table1').DataTable();
+            $(document).ready(function() {
+                $('[data-toggle="popover"]').popover();
+            });
         }
     }
     var key = {

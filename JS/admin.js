@@ -39,7 +39,6 @@ admin_router.route('/admin_view_all/:key')
                     if (err) {
                         console.log(err);
                     } else {
-                        // console.log(rows);
                         var result_rows = JSON.stringify(rows);
                         res.send(result_rows);
                     }
@@ -79,7 +78,6 @@ admin_router.route('/admin_view_old/:key')
                     if (err) {
                         console.log(err);
                     } else {
-                        // console.log(rows);
                         var result_rows = JSON.stringify(rows);
                         res.send(result_rows);
                     }

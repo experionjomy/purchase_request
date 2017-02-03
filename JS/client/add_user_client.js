@@ -9,20 +9,18 @@
            return false;
        } else if (matching == null) {
            bootbox.alert("Invalid email");
-         document.getElementById("uname").value="";
-        document.getElementById("mail").value="";
-           
+           document.getElementById("uname").value = "";
+           document.getElementById("mail").value = "";
            return false;
-
        } else {
            var httpObject = new XMLHttpRequest();
            httpObject.onreadystatechange = function() {
                var result = this.responseText;
                result = JSON.parse(result);
                if (result.status == 200) {
-              bootbox.alert("User added successfully", function() {
-                location.reload();
-                });
+                   bootbox.alert("User added successfully", function() {
+                       location.reload();
+                   });
                } else {
                    bootbox.alert("Cannot add user");
                }
