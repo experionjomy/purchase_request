@@ -30,7 +30,8 @@ module.exports.loginCheck = function(req, res) {
         userType: "",
     };
 
-    console.log("hello ", req.body.eid);
+    console.log("hello ", req.body.eid+" and " +req.body.password);
+
     conn.query('select password,flag from user where username=? and password=?', [userName, password], function(err, rows) {
         if (rows.length > 0 && !err) {
 
